@@ -70,6 +70,7 @@ class TestExoticColumnNameRender(CompareAndRunTestCase):
             # ### end Alembic commands ###        
         """
 
+
 class TestExoticColumnNameRenderCamelCase(CompareAndRunTestCase):
     """Test for enum names that are keyword in postgres"""
 
