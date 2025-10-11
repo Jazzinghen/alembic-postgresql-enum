@@ -87,7 +87,7 @@ class SyncEnumValuesOp(alembic.operations.ops.MigrateOperation):
         indexes_to_recreate: List[TableIndex],
     ):
         enum_type_name = f'"{enum_schema}"."{enum_name}"'
-        temporary_enum_name = f"{enum_name}_old"
+        temporary_enum_name = f'"{enum_name}_old"'
 
         if indexes_to_recreate and enum_values_to_rename:
             indexes_to_recreate = transform_indexes_for_renamed_values(
@@ -124,7 +124,7 @@ class SyncEnumValuesOp(alembic.operations.ops.MigrateOperation):
                 set_default(connection, table_reference, column_default)
 
         drop_comparison_operators(connection, enum_schema, enum_name, temporary_enum_name)
-        temporary_enum_type_name = f'"{enum_schema}"."{temporary_enum_name}"'
+        temporary_enum_type_name = f'"{enum_schema}".{temporary_enum_name}'
         drop_type(connection, temporary_enum_type_name)
 
         recreate_indexes(connection, indexes_to_recreate)
